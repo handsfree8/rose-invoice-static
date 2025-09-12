@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Rose Legacy — Invoices</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- jsPDF and AutoTable from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="branding">
+        <div class="logo" style="display:flex;align-items:center;gap:8px;background:none;width:auto;height:auto;padding:0;border-radius:12px;">
+          <img src="static/logo.png" alt="Logo" style="height:48px;width:48px;object-fit:cover;border-radius:12px;border:2px solid #eceaf6;background:#fff;"/>
+        </div>
+        <div>
+          <h1>Rose Legacy Home Solutions LLC</h1>
+          <div class="sub">HVAC Services | Overland Park, KS</div>
+          <div class="sub">Phone: 816 298 4828 | Email: appointments@roselegacyhvac.com</div>
+        </div>
+      </div>
+  <button id="btn-generate" class="btn primary">Download PDF</button>
+  <button id="btn-goto-estimate" class="btn" style="margin-left:10px;">Go to Ball Park Estimate</button>
+    </header>
+
+    <section class="card">
+      <h2>Invoice Info</h2>
+      <div class="grid">
+        <label>Invoice #<input id="inv-number" type="text" placeholder="000123"/></label>
+        <label>Date<input id="inv-date" type="date"/></label>
+        <label>Client<input id="client-name" type="text" placeholder="Client name"/></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Items</h2>
+  <div class="items-table-wrapper">
+  <table id="items-table">
+        <thead>
+          <tr>
+            <th style="width:55%">Description</th>
+            <th style="width:15%">Qty</th>
+            <th style="width:15%">Unit Price</th>
+            <th style="width:15%">Total</th>
+            <th style="width:5%"></th>
+          </tr>
+        </thead>
+        <tbody id="items-body">
+        </tbody>
+  </table>
+  </div>
+      <div class="items-actions">
+        <button id="btn-add" class="btn">+ Add item</button>
+      </div>
+      <div class="totals">
+        <div><span>Subtotal:</span><span id="subtotal">$0.00</span></div>
+        <div><span>Tax %:</span><input id="tax-rate" type="number" min="0" step="0.01" value="0"/></div>
+        <div><span>Discount %:</span><input id="discount-rate" type="number" min="0" step="0.01" value="0"/></div>
+        <div class="total-due"><span>Total Amount Due:</span><span id="total">$0.00</span></div>
+      </div>
+    </section>
+
+    
+
+    <section class="card">
+      <div class="grid">
+        <label>Payment Method
+          <select id="payment-method">
+            <option>Cash</option>
+            <option>Card</option>
+            <option>Check</option>
+            <option>Zelle</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Terms
+          <input id="terms" type="text" value="Paid in full"/>
+        </label>
+      </div>
+      <label>Notes
+        <textarea id="notes" rows="2" placeholder="Internal notes (optional)" style="width:100%;resize:vertical;"></textarea>
+        <button id="btn-save-notes" class="btn" style="margin-top:8px;">Save</button>
+      </label>
+    </section>
+
+    <section class="card">
+      <h3>Warranty Disclaimer</h3>
+    <label for="warranty-disclaimer"></label>
+    <textarea id="warranty-disclaimer" rows="4" style="width:100%;resize:vertical;"></textarea>
+  <button id="btn-save-disclaimer" class="btn" style="margin-top:8px;">Save</button>
+    </section>
+
+    <section class="card" id="ballpark-estimate-section">
+      <h2>Ball Park Estimate</h2>
+      <div class="items-table-wrapper">
+        <table id="estimate-table">
+          <thead>
+            <tr>
+              <th style="width:55%">Description</th>
+              <th style="width:15%">Qty</th>
+              <th style="width:15%">Unit Price</th>
+              <th style="width:15%">Total</th>
+              <th style="width:5%"></th>
+            </tr>
+          </thead>
+          <tbody id="estimate-body">
+          </tbody>
+        </table>
+      </div>
+      <div class="items-actions">
+        <button id="btn-add-estimate" class="btn">+ Add estimate item</button>
+      </div>
+      <div class="totals">
+        <div><span>Subtotal:</span><span id="estimate-subtotal">$0.00</span></div>
+        <div class="total-due"><span>Estimated Total:</span><span id="estimate-total">$0.00</span></div>
+      </div>
+      <div style="text-align:right;margin-top:10px;">
+        <button id="btn-estimate-pdf" class="btn primary">Download Estimate PDF</button>
+      </div>
+    </section>
+    <section class="card secondary">
+      <div class="grid">
+        <button id="btn-save-json" class="btn">Save as JSON</button>
+        <label class="filelabel">Load JSON
+          <input id="file-json" type="file" accept="application/json"/>
+        </label>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Rose Legacy Home Solutions LLC</div>
+    </footer>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>

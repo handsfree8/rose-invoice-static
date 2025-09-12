@@ -1,0 +1,40 @@
+{
+  "company": {
+    "name": "Rose Legacy Home Solutions LLC",
+    "address": "Overland Park, KS",
+    "phone": "816 298 4828",
+    "email": "appointments@roselegacyhvac.com"
+  },
+  "invoice": {
+    "number": "000123",
+    "date": "2025-06-24",
+    "client": "Lamont",
+    "taxRate": 0,
+    "discountRate": 0,
+    "paymentMethod": "Cash",
+    "terms": "Paid in full",
+    "notes": ""
+  },
+  "items": [
+    {
+      "description": "Compressor pump down",
+      "qty": 0,
+      "price": 0
+    },
+    {
+      "description": "Air filter replacement",
+      "qty": 1,
+      "price": 15
+    },
+    {
+      "description": "Vaccum pump",
+      "qty": 0,
+      "price": 0
+    },
+    {
+      "description": "freon added by  pound",
+      "qty": 5,
+      "price": 60
+    }
+  ]
+}
