@@ -31,7 +31,11 @@
       <div class="grid">
         <label>Invoice #<input id="inv-number" type="text" placeholder="000123"/></label>
         <label>Date<input id="inv-date" type="date"/></label>
-        <label>Client<input id="client-name" type="text" placeholder="Client name"/></label>
+        <label>Client<input id="client-name" type="text" placeholder="Client name" list="client-suggestions"/></label>
+        <datalist id="client-suggestions">
+          <option value="jayandj.ventures@gmail.com"></option>
+          <option value="Aaron Foy"></option>
+        </datalist>
       </div>
     </section>
 
